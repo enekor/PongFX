@@ -18,12 +18,17 @@ public class PongVista extends BorderPane {
     private StackPane pista;
     private PongControlador controlador;
     private Label puntosI,puntosD;
+    /*private boolean full = false;*/
 
-    public PongVista() throws UnsupportedAudioFileException, LineUnavailableException, IOException {init();}
+    public PongVista(/*boolean full*/) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        /*this.full=full;*/
+        init();
+    }
 
     private void init() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
 
         pista = new StackPane();
+        pista.setMinSize(0,0);
 
         raqueta1 = new Rectangle();
         raqueta1.heightProperty().bind(pista.heightProperty().divide(10));

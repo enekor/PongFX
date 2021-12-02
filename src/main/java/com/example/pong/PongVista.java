@@ -73,8 +73,8 @@ public class PongVista extends BorderPane {
         pista.setAlignment(pelota, Pos.CENTER);
         pista.setAlignment(paredI,Pos.CENTER_LEFT);
         pista.setAlignment(paredD,Pos.CENTER_RIGHT);
-        pista.setAlignment(puntosD,Pos.BOTTOM_RIGHT);
-        pista.setAlignment(puntosI,Pos.TOP_LEFT);
+        pista.setAlignment(puntosD,Pos.BOTTOM_LEFT);
+        pista.setAlignment(puntosI,Pos.TOP_RIGHT);
 
         this.setCenter(pista);
 

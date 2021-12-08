@@ -2,7 +2,6 @@ package com.example.pong;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -24,8 +23,10 @@ public class MenuVista extends StackPane {
 
         textos.getChildren().addAll(start,fullSize,exit);
         this.getChildren().add(textos);
-        //this.setAlignment(textos, Pos.CENTER);
-        //textos.translateYProperty().bind(this.heightProperty().divide(2).add(textos.heightProperty().divide(2)));
+        this.setAlignment(textos, Pos.CENTER);
+
+        textos.translateXProperty().bind(this.widthProperty().divide(2.5));
+        textos.translateYProperty().bind(this.heightProperty().divide(2.5));
 
         controller = new MenuControlador(textos,start,fullSize,exit);
 

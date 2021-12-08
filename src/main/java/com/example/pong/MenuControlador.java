@@ -27,15 +27,14 @@ public class MenuControlador {
 
     private void initMenu(){
         start.setOnMouseClicked(x->{
-            Stage juego = new Stage();
             try {
-                juego.setMaximized(full);
-                juego.setScene(new Scene(new PongVista(),500,500));
-                juego.setTitle("PONG FX");
-                juego.show();
+                Scene juego = new Scene(new PongVista(),500,500);
+                Intermedia.getInstance().startGame(juego,full);
             } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
                 e.printStackTrace();
             }
+
+
         });
 
         fullSize.setOnMouseClicked(x->{

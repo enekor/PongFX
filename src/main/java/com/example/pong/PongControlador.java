@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -20,6 +21,7 @@ public class PongControlador {
     private Circle pelota;
     private StackPane pista;
     private Timeline animacion;
+    private Timeline colorPelota;
     private Rectangle paredI;
     private Rectangle paredD;
     private Label puntosI;
@@ -80,6 +82,13 @@ public class PongControlador {
             moverPelota();
         }));
         animacion.setCycleCount(Animation.INDEFINITE);
+
+        colorPelota= new Timeline(new KeyFrame(Duration.millis(100),t->{
+                cambiarColor();
+        }));
+        colorPelota.setCycleCount(Animation.INDEFINITE);
+
+        colorPelota.play();
     }
 
     private void initControls(){
@@ -190,12 +199,26 @@ public class PongControlador {
             derecha = true;
             izquierda = false;
             velocidadPelota+=0.5;
+            if((int)(Math.random()*10)+1>5){
+                arriba=true;
+                abajo=false;
+            }else{
+                arriba=false;
+                abajo=true;
+            }
         }
         if(pelota.getBoundsInParent().intersects(raqueta2.getBoundsInParent())){
             colisionSound();
             derecha = false;
             izquierda = true;
             velocidadPelota+=0.5;
+            if((int)(Math.random()*2)+1==2){
+                arriba=true;
+                abajo=false;
+            }else{
+                arriba=false;
+                abajo=true;
+            }
         }
         if(pelota.getBoundsInParent().intersects(paredI.getBoundsInParent())){
 
@@ -279,5 +302,10 @@ public class PongControlador {
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
         clip.start();
+    }
+
+    private void cambiarColor(){
+
+        pelota.setFill(Color.color(Math.random(),Math.random(),Math.random()));
     }
 }
